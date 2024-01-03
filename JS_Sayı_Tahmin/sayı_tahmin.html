@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sayı Tahmin Oyunu</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+    body, html {
+        font-family: 'Roboto', sans-serif;
+        height: 100%;
+        background: linear-gradient(to bottom, #a8e7f7, #6063fd);
+    }
+
+    #sayi_tahmin {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background-color: #fff;
+        max-width: 400px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid rgba(0, 0, 0, 0);
+        border-radius: 8%;
+        background-color: #ffffff;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    p {
+        color: #666;
+        text-align: center;
+    }
+
+    input[type="number"] {
+        padding: 8px 12px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        text-align: center;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    }
+
+    button {
+        border-radius: 5%;
+        display: block;
+        margin: 5px auto;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #3b943e;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #036988;
+    }
+
+    #index_gönderme{
+        border-radius: 5%;
+        display: block;
+        margin: 2px auto;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #033f80;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #index_gönderme:hover {
+        background-color: #a33030;
+    }
+
+    #SONUÇ {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 20px;
+        color: #333;
+    }
+
+
+    </style>
+</head>
+<body>
+    
+    <div id="sayi_tahmin">
+
+	<h1>Sayı Tahmin Oyunu</h1>
+
+	<p>1 ile 100 arasında rastgele bir sayı tahmin edin.</p>
+
+	<input type="number" id="kul_tahmin">
+	<button onclick="tahmin_kontrol()">Tahmin Et</button>
+
+	<p id="SONUÇ"></p>
+    </div>
+
+	<script>
+		var random_N = Math.floor(Math.random() * 100) + 1;
+		var tahminler = 0;
+        //var neg_sayi = 0;
+
+
+		function tahmin_kontrol() {
+
+			var kul_tahminleri = document.getElementById("kul_tahmin").value;
+			tahminler++;
+
+			if (kul_tahminleri == random_N) {
+				document.getElementById("SONUÇ").innerHTML = "Tebrikler, " + tahminler + " denemede doğru tahmin ettiniz!!!" ;
+			} else if (kul_tahminleri < random_N) {
+				document.getElementById("SONUÇ").innerHTML = "Daha büyük bir sayı girin.";
+			} else if (kul_tahminleri > random_N) {
+				document.getElementById("SONUÇ").innerHTML = "Daha küçük bir sayı girin.";
+			} 
+                /*else if (kul_tahminleri < neg_sayi) 
+                    {
+                     document.getElementById("SONUÇ").innerHTML = "1 - 100 Arası tahminde bulunun !";
+                    }
+                */
+
+		}
+
+	</script>
+
+</body>
+</html>
